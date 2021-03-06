@@ -3,9 +3,9 @@
 
 namespace ariel{
     using namespace std;
-    string snowman(long number);
-    int count_digits(long number);
-    void check_each_digit(long x);
-    void create_the_snowman(long x);
+    string snowman(int number);
+    int count_digits(int number);
+    void check_each_digit(int number);
+    void create_the_snowman(int number);
 
 }

@@ -34,10 +34,10 @@ TEST_CASE("Too many digits: given wrong number of choices- an input out of range
     CHECK_THROWS(snowman(121212121));  // there are 9 digits in the input, while needs to have 8 exactly. check that some exception is thrown. 
     CHECK_THROWS_AS(snowman(123456789), std::out_of_range);  // check that the specific exception of out of range is thrown. there are 9 digits,while needs to have 8 exactly.
     CHECK_THROWS_AS(snowman(1234123412), std::out_of_range);  // check that a specific exception type is thrown. there are 10 digits, while needs to have 8 exactly.
-    CHECK_THROWS_AS(snowman(12341234123), std::out_of_range); // check that a specific exception type is thrown. there are 11 digits,while needs to have 8 exactly..
-    CHECK_THROWS_AS(snowman(123412341234), out_of_range); // check that a specific exception type is thrown. there are 12 digits, while needs to have 8 exactly.
-    CHECK_THROWS_AS(snowman(2323141324122), out_of_range); // there are 13 digits, while there should be 8. check that a out of range exception is thrown.
-    CHECK_THROWS_AS(snowman(22222224141442), out_of_range); // there are 14 digits, while there should be 8. check that a out of range exception is thrown.
+    // CHECK_THROWS_AS(snowman(12341234123), std::out_of_range); // check that a specific exception type is thrown. there are 11 digits,while needs to have 8 exactly..
+    // CHECK_THROWS_AS(snowman(123412341234), out_of_range); // check that a specific exception type is thrown. there are 12 digits, while needs to have 8 exactly.
+    // CHECK_THROWS_AS(snowman(2323141324122), out_of_range); // there are 13 digits, while there should be 8. check that a out of range exception is thrown.
+    // CHECK_THROWS_AS(snowman(22222224141442), out_of_range); // there are 14 digits, while there should be 8. check that a out of range exception is thrown.
 
 }
 
@@ -79,11 +79,12 @@ TEST_CASE("Good inputs- check the outputs") {
 
 TEST_CASE("Bad inputs- look for exceptions") {
     CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(5554393453));
+    CHECK_THROWS(snowman(55543453));
     CHECK_THROWS(snowman(528723855));
-    CHECK_THROWS(snowman(551912325));
+    CHECK_THROWS(snowman(55191235));
     CHECK_THROWS(snowman(55329435));
-    /* Add more checks here */
+    CHECK_THROWS(snowman(124329435));
+
 }
 
-/* add more test cases here */
+    /* 30 tests */
