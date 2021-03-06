@@ -56,8 +56,8 @@ TEST_CASE("Not enough digits: given wrong number of choices- an input out of ran
 
 TEST_CASE("Given unvalid options- wrong input: includes digits that are not 1,2,3,4") {
     CHECK_THROWS(snowman(44312346));
-    CHECK_THROWS_AS(snowman(12345678), std::invalid_argument);
-    CHECK_THROWS_AS(snowman(12345678), std::invalid_argument);
+    CHECK_THROWS_AS(snowman(12923102), std::invalid_argument);
+    CHECK_THROWS_AS(snowman(14645678), std::invalid_argument);
     CHECK_THROWS_AS(snowman(12345678), std::invalid_argument);
     CHECK_THROWS_AS(snowman(22227222), std::invalid_argument);
     CHECK_THROWS_AS(snowman(12323991), std::invalid_argument);
@@ -66,14 +66,14 @@ TEST_CASE("Given unvalid options- wrong input: includes digits that are not 1,2,
 
 TEST_CASE("Good inputs- check the outputs") {
 
-    CHECK(snowman(11114411) == string("_===_\n(.,.)\n( : )\n( : )"));
-    CHECK(snowman(33232124) == string("   _\n/_\\n\(o_O)\n(] [)>\n(   )"));
+    CHECK(snowman(11114411) == string(" _===_\n (.,.)\n ( : )\n ( : )"));
+    CHECK(snowman(33232124) == string("   _\n/_\\ \n\(o_O)\n(] [)>\n (   )"));
     CHECK(snowman(12222212) == string(" _===_\n\(o.o)/\n ( : )\n (" ")"));
-    CHECK(snowman(32443333) == string("   _\n  /_\\n\(o_O)\n (] [)>\n (   )"));
-    CHECK(snowman(12341234) == string("_===_\n (O.-)/\n<(> <)\n (   )"));
+    CHECK(snowman(32443333) == string("   _\n  /_\\ \n (-.-)\n/(> <)\\n (___)"));
+    CHECK(snowman(12341234) == string(" _===_\n (O.-)/\n<(> <)\n (   )"));
     CHECK(snowman(22222222) == string("  ___\n .....\n\(o.o)/\n (] [)\n (" ")"));
-    CHECK(snowman(55555555) == string("_===_\n\(.,.)/\n<( : )>\n ( : )"));
-    CHECK(snowman(44444432) == string("  ___\n (_*_)\n (- -)\n (> <)\n (" ")"));
+    CHECK(snowman(55555555) == string(" _===_\n\(.,.)/\n<( : )>\n ( : )"));
+    CHECK(snowman(44444432) == string("   ___\n(_*_)\n (- -)\n (> <)\n (" ")"));
 
 }
 
