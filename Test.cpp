@@ -67,13 +67,12 @@ TEST_CASE("Given unvalid options- wrong input: includes digits that are not 1,2,
 TEST_CASE("Good inputs- check the outputs") {
 
     CHECK(snowman(11114411) == string(" _===_\n (.,.)\n ( : )\n ( : )"));
-    CHECK(snowman(33232124) == string("   _\n/_\\ \n\(o_O)\n(] [)>\n (   )"));
-    CHECK(snowman(12222212) == string(" _===_\n\(o.o)/\n ( : )\n (" ")"));
-    CHECK(snowman(32443333) == string("   _\n  /_\\ \n (-.-)\n/(> <)\\n (___)"));
+    CHECK(snowman(33232124) == string("   _\n  /_\\ \n\\(o_O)\n (] [)>\n (   )"));
+    CHECK(snowman(12222212) == string(" _===_\n\\(o.o)/\n ( : )\n (" ")"));
+    CHECK(snowman(32443333) == string("   _\n  /_\\ \n (-.-)\n/(> <)\\ \n (___)"));
     CHECK(snowman(12341234) == string(" _===_\n (O.-)/\n<(> <)\n (   )"));
-    CHECK(snowman(22222222) == string("  ___\n .....\n\(o.o)/\n (] [)\n (" ")"));
-    CHECK(snowman(55555555) == string(" _===_\n\(.,.)/\n<( : )>\n ( : )"));
-    CHECK(snowman(44444432) == string("   ___\n(_*_)\n (- -)\n (> <)\n (" ")"));
+    CHECK(snowman(22222222) == string("  ___\n .....\n\\(o.o)/\n (] [)\n (" ")"));
+    CHECK(snowman(44444432) == string("  ___\n (_*_)\n (- -)\n (> <)\n (" ")"));
 
 }
 
@@ -81,9 +80,9 @@ TEST_CASE("Bad inputs- look for exceptions") {
     CHECK_THROWS(snowman(555));
     CHECK_THROWS(snowman(55543453));
     CHECK_THROWS(snowman(528723855));
-    CHECK_THROWS(snowman(55191235));
+    CHECK_THROWS(snowman(22191232));
     CHECK_THROWS(snowman(55329435));
-    CHECK_THROWS(snowman(124329435));
+    CHECK_THROWS(snowman(124329436));
 
 }
 
