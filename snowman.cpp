@@ -15,10 +15,10 @@ const int minSnowman = 11111111;
 const int maxSnowman = 55555555;
 using namespace std;
 
-int count_digits(int number);
-void check_each_digit(int number);
-void collect_snowman_parts(int number);
-void remove_newline(std::string s);
+// int count_digits(int number);
+// void check_each_digit(int number);
+// void collect_snowman_parts(int number);
+// void remove_newline(std::string s);
 
 namespace ariel
 {
@@ -30,11 +30,13 @@ namespace ariel
         return int(log10(number) + 1);
     }
 
-    void check_each_digit(int number) //checks if the digits are valid
+    void check_and_take_each_digit(int number, int digitsArray[]) //checks if the digits are valid, and puts them in an array
     {
+        int count = snowmanLen;
         int digit = 0;
         while (number >= ten)
         {
+            count--;
             digit = number % ten;
             number = number / ten;
             if (digit != 1 && digit != 2 && digit != 3 && digit != 4)
@@ -42,6 +44,7 @@ namespace ariel
                 std::cout << "invalid digit '" << digit << "'\n"; //to print
                 throw std::invalid_argument("The input is invalid! make sure enter a number that contains only the digits 1-4");
             }
+            digitsArray[count]= digit;
             //  std::cout << digit << '\n'; //to print
         }
 
@@ -53,9 +56,10 @@ namespace ariel
             throw std::invalid_argument("The input is invalid! make sure enter a number that contains only the digits 1-4");
             //"The input is invalid! make sure enter a number that contains only the digits 1-4"
         }
+        digitsArray[0]= digit;
     }
 
-    void collect_snowman_parts(int number, string snowmanBody[]) //collects the chosen snowman's body parts
+    void collect_snowman_parts(int number, string snowmanBody[], int digitsArray[]) //collects the chosen snowman's body parts
     {
         string snowmanBodyParts[snowmanLen][four] = {
         {" _===_", "  ___\n .....", "   _\n  /_\\ ", "  ___\n (_*_)"},
@@ -67,30 +71,10 @@ namespace ariel
         {" : ", "] [", "> <", "   "},
         {" : ", "\" \"", "___", "   "}} ;
 
-
-        //       std::cout << "NUM IS " << number << '\n'; //to print
-        int digit = 0;
-        int whichFeature = nine;
-        int placeInBody = 0;
-        while (number >= ten)
-        {
-            whichFeature--;
-            digit = number % ten;
-            number = number / ten;
-            placeInBody = whichFeature - 1;
-            // std::cout << "the digit is " << digit << '\n'; //to print
-            // std::cout << "the feature is " << whichFeature << '\n'; //to print
-
-            //range of (digit-1) is 0-3 because it's a valid number, so range of digit is (1-4).
-            snowmanBody[placeInBody] = snowmanBodyParts[placeInBody][digit - 1];
+        for(int i=0; i<= seven; i++){
+            snowmanBody[i]= snowmanBodyParts[i][digitsArray[i]-1];
         }
 
-        ///////////and to the last digit- which is the first feature:
-        digit = number % ten;
-        snowmanBody[0] = snowmanBodyParts[0][digit - 1];
-
-        //"The input is invalid! make sure enter a number that contains only the digits 1-4"
-        //  cout << "digits are" << digit << '\n'; //to print
     }
 
     string snowman(int number) //returns the string of the snowman
@@ -105,12 +89,13 @@ namespace ariel
             std::cout << "invalid number '" << number << "'\n"; //to print
             throw std::invalid_argument("The input is invalid! make sure enter a number that contains only the digits 1-4");
         }
-        check_each_digit(number); // will throw an exception if the number is invalid
+        int digitsArray[snowmanLen]= {0, 0, 0, 0, 0, 0, 0, 0};
+        check_and_take_each_digit(number, digitsArray); // will throw an exception if the number is invalid
                                   //    string snowman="";
 
         //reaching here means the input is valid. so, let's start printing the snowman!
         string snowmanBody[snowmanLen] = {" ", " ", " ", " ", " ", " ", " ", " "};
-        collect_snowman_parts( number, snowmanBody);
+        collect_snowman_parts( number, snowmanBody, digitsArray);
         string H = snowmanBody[0];     //Hat
         string N = snowmanBody[1];     //Nose/mouth
         string L = snowmanBody[2];     //Left eye
