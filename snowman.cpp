@@ -8,8 +8,8 @@ const int hatIndex = 0;
 const int noseMouthIndex = 1;
 const int leftEyeIndex = 2;
 const int rightEyeIndex = 3;
-const int leftArm = 4;
-const int rightArm = 5;
+const int leftArmIndex = 4;
+const int rightArmIndex = 5;
 const int torsoIndex = 6;
 const int baseIndex = 7;
 const int minSnowman = 11111111;
@@ -17,10 +17,6 @@ const int maxSnowman = 55555555;
 const int snowmanLen = 8;
 const int optionsOfEachFeature = 4;
 using namespace std;
-
-// int count_digits(int number);
-// void check_each_digit(int number);
-// void collect_snowman_parts(int number);
 
 namespace ariel
 {
@@ -107,15 +103,6 @@ namespace ariel
         string T = snowmanBody[torsoIndex];   //Torso
         string B = snowmanBody[baseIndex]; //Base
 
-        // std::cout << "H IS " << H << "\n"; //to print
-        // std::cout << "N IS " << N << "\n"; //to print
-        // std::cout << "L IS " << L << "\n"; //to print
-        // std::cout << "R IS " << R << "\n"; //to print
-        // std::cout << "X IS " << X << "\n"; //to print
-        // std::cout << "Y IS " << Y << "\n"; //to print
-        // std::cout << "T IS " << T << "\n"; //to print
-        // std::cout << "B IS " << B << "\n"; //to print
-
         if(X== " "){ //fixing special cases spaces.
             X= "  ";
         }
@@ -152,9 +139,6 @@ namespace ariel
                 snowman = H + "\n" + X + "(" + L + N + R + ")" + Y + "\n" + " (" + T + ")" + "\n" + " (" + B + ")"; //cuz X doesn't contain \n and so does Y
             }
         }
-        //string realsnowman= H+"\n"+XS+"("+L+N+R+")"+YS+XS+"("+T+")"+YS+"("+B+")";
-
-        //       std::cout << "X IS: \n" << "-"+X+"-"   ;
 
         std::cout << "THE SNOWMAN IS: \n"
                   << snowman << "\n"; //to print
