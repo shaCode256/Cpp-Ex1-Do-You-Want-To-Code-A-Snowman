@@ -3,22 +3,24 @@
 #include <iostream>
 #include <cmath>
 
-const int ten = 10;
-const int snowmanLen = 8;
-const int five = 5;
-const int six = 6;
-const int seven = 7;
-const int eight = 8;
-const int nine = 9;
-const int four = 4;
+const int decimalBase = 10;
+const int hatIndex = 0;
+const int noseMouthIndex = 1;
+const int leftEyeIndex = 2;
+const int rightEyeIndex = 3;
+const int leftArm = 4;
+const int rightArm = 5;
+const int torsoIndex = 6;
+const int baseIndex = 7;
 const int minSnowman = 11111111;
 const int maxSnowman = 55555555;
+const int snowmanLen = 8;
+const int optionsOfEachFeature = 4;
 using namespace std;
 
 // int count_digits(int number);
 // void check_each_digit(int number);
 // void collect_snowman_parts(int number);
-// void remove_newline(std::string s);
 
 namespace ariel
 {
@@ -34,11 +36,11 @@ namespace ariel
     {
         int count = snowmanLen;
         int digit = 0;
-        while (number >= ten)
+        while (number >= decimalBase)
         {
             count--;
-            digit = number % ten;
-            number = number / ten;
+            digit = number % decimalBase;
+            number = number / decimalBase;
             if (digit != 1 && digit != 2 && digit != 3 && digit != 4)
             {
                 std::cout << "invalid digit '" << digit << "'\n"; //to print
@@ -49,7 +51,7 @@ namespace ariel
         }
 
         //aaaaand to the last digit:
-        digit = number % ten;
+        digit = number % decimalBase;
         if (digit != 1 && digit != 2 && digit != 3 && digit != 4)
         {
             std::cout << "invalid digit '" << digit << "'\n"; //to print
@@ -61,7 +63,7 @@ namespace ariel
 
     void collect_snowman_parts(int number, string snowmanBody[], int digitsArray[]) //collects the chosen snowman's body parts
     {
-        string snowmanBodyParts[snowmanLen][four] = {
+        string snowmanBodyParts[snowmanLen][optionsOfEachFeature] = {
         {" _===_", "  ___\n .....", "   _\n  /_\\ ", "  ___\n (_*_)"},
         {",", ".", "_", " "},
         {".", "o", "O", "-"},
@@ -71,7 +73,7 @@ namespace ariel
         {" : ", "] [", "> <", "   "},
         {" : ", "\" \"", "___", "   "}} ;
 
-        for(int i=0; i<= seven; i++){
+        for(int i=0; i< snowmanLen; i++){
             snowmanBody[i]= snowmanBodyParts[i][digitsArray[i]-1];
         }
 
@@ -95,15 +97,15 @@ namespace ariel
 
         //reaching here means the input is valid. so, let's start printing the snowman!
         string snowmanBody[snowmanLen] = {" ", " ", " ", " ", " ", " ", " ", " "};
-        collect_snowman_parts( number, snowmanBody, digitsArray);
-        string H = snowmanBody[0];     //Hat
-        string N = snowmanBody[1];     //Nose/mouth
-        string L = snowmanBody[2];     //Left eye
-        string R = snowmanBody[3];     //Right eye
-        string X = snowmanBody[four];  //Left arm
-        string Y = snowmanBody[five];  //Right arm
-        string T = snowmanBody[six];   //Torso
-        string B = snowmanBody[seven]; //Base
+        collect_snowman_parts(number, snowmanBody, digitsArray);
+        string H = snowmanBody[hatIndex];     //Hat
+        string N = snowmanBody[noseMouthIndex];     //Nose/mouth
+        string L = snowmanBody[leftEyeIndex];     //Left eye
+        string R = snowmanBody[rightEyeIndex];     //Right eye
+        string X = snowmanBody[leftArmIndex];  //Left arm
+        string Y = snowmanBody[rightArmIndex];  //Right arm
+        string T = snowmanBody[torsoIndex];   //Torso
+        string B = snowmanBody[baseIndex]; //Base
 
         // std::cout << "H IS " << H << "\n"; //to print
         // std::cout << "N IS " << N << "\n"; //to print
