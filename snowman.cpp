@@ -40,7 +40,7 @@ namespace ariel
             if (digit != 1 && digit != 2 && digit != 3 && digit != 4)
             {
                 std::cout << "invalid digit '" << digit << "'\n"; //to print
-                throw std::invalid_argument("The input is invalid! make sure enter a number that contains only the digits 1-4");
+                throw std::out_of_range("out_of_range");
             }
             digitsArray[count]= digit;
             //  std::cout << digit << '\n'; //to print
