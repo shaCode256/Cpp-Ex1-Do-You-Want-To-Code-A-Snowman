@@ -1,8 +1,8 @@
 /**
- * Demo program for snowman exercise.
+ * Main Demo program for snowman exercise.
  * 
- * Author: Erel Segal-Halevi
- * Since : 2021-02
+ * Author: Shavit Luzon
+ * Since : 2021-03
  */
 
 #include "snowman.hpp"
@@ -10,25 +10,12 @@
 #include <stdexcept>
 
 using namespace std;
-//using namespace ariel;
+using namespace ariel;
 
 int main() {
-	cout << ariel::snowman(11114411) << endl;   /* Should print:
-_===_
-(.,.)
-( : )
-( : )
-	*/
-	cout << ariel::snowman(33232124) << endl;   /* Should print:
-   _
-  /_\
-\(o_O)
- (] [)>
- (   )
-	*/
-	 try {
-	 	cout << ariel::snowman(5) << endl;   // Exception - not a valid code
-	 } catch (exception& ex) {
-	  	cout << "   caught exception: " << ex.what() << endl;  // should print "Invalid code '5'"
-	 }
+int number; 
+cout << "Type a number which represent a snowman: "; // Type a number and press enter
+cin >> number; // Get user input from the keyboard
+cout << "Your snowman is: \n" << snowman(number) << endl; // Display the input value
+
 }

@@ -140,9 +140,9 @@ namespace ariel
             }
         }
 
-        std::cout << "THE SNOWMAN IS: \n"
-                  << snowman << "\n"; //to print
-                                   //       std::cout << "THE B IS: \n" << "("+B+")" << "\n"; //to print
+        // std::cout << "THE SNOWMAN IS: \n"
+        //           << snowman << "\n"; //to print
+        //                            //       std::cout << "THE B IS: \n" << "("+B+")" << "\n"; //to print
         return snowman;
     }
 
